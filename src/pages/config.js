@@ -20,7 +20,7 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      url: 'http://kmaz.pythonanywhere.com/wsr',
+      url: 'https://kmaz.pythonanywhere.com/dsr',
       data: { SSID: wifiSSID, wpa: wpaKey },
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      url: 'http://kmaz.pythonanywhere.com/dsr',
+      url: 'https://kmaz.pythonanywhere.com/esr',
       data: { pin: simPin, carrier: carrier },
       headers: {
         'Content-Type': 'application/json',
