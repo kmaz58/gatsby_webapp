@@ -115,7 +115,7 @@ const ConfigPage = () => {
                 </Form.Text>
               </Form.Group>
               <Form.Select aria-label="Select Carrier" onChange={(e) => setCARRIER(e.target.value)} type="type">
-                <option value="Cosmote">Cosmote</option>
+                <option value="Kikkaboo">Cosmote</option>
                 <option value="Vodafone">Vodafone</option>
                 <option value="Wind">Wind</option>
               </Form.Select>
