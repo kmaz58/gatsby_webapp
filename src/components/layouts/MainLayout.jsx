@@ -26,13 +26,12 @@ function MainLayout(props) {
                 <ProSidebar>
                     <Menu iconShape="square">
                         <img id="logo" src={logo} alt="logo_image" />
-                        <MenuItem><Link to="/">Dashboard</Link></MenuItem>
-                        <MenuItem><BsGearFill /></MenuItem>
-                        <MenuItem><Link to="/config/">Settings</Link></MenuItem>
-                        <SubMenu title="Components">
-                            <MenuItem>Component 1</MenuItem>
-                            <MenuItem>Component 2</MenuItem>
-                        </SubMenu>
+                        <MenuItem><Link to="/guide/">Οδηγίες</Link></MenuItem>
+                        <MenuItem><Link to="/config/">Προϊόντα</Link></MenuItem>
+                        <MenuItem><Link to="/check_skroutz/">Έλεγχος Πληρωμών Skroutz</Link></MenuItem>
+                        <MenuItem><Link to="/check_elta/">Έλεγχος Πληρωμών Elta</Link></MenuItem>
+                        <MenuItem><Link to="/contact/">Επικοινωνία</Link></MenuItem>
+                        <MenuItem><BsGearFill /><Link to="/404/"> Ρυθμίσεις</Link></MenuItem>
                     </Menu>
                 </ProSidebar>
                 <Container className="mt-5">

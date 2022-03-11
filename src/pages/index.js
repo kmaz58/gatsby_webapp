@@ -4,7 +4,7 @@ import MainLayout from '../components/layouts/MainLayout';
 
 const IndexPage = () => (
   <MainLayout>
-    home
+    Αρχική
   </MainLayout>
 )
 

@@ -84,35 +84,9 @@ const ConfigPage = () => {
       <Row>
         <Col>
           <Card className="p-2">
-            <Form onSubmit={wsr}>
-              <Form.Group className="mb-3" controlId="wsr">
-                <Form.Label>Wifi SSID</Form.Label>
-                <Form.Control onChange={(e) => setSSID(e.target.value)} type="text" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                  This is a text
-                </Form.Text>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>WPA key</Form.Label>
-                <Form.Control onChange={(e) => setWPA(e.target.value)} type="password" placeholder="Password" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Set Wifi
-              </Button>
-            </Form>
-          </Card>
-        </Col>
-        <Col>
-          <Card className="p-2">
             <Form onSubmit={dsr}>
               <Form.Group className="mb-3" controlId="dsr">
-                <Form.Label>Sim Pin</Form.Label>
-                <Form.Control onChange={(e) => setPIN(e.target.value)} type="type" />
-                <Form.Text className="text-muted">
-                  If none, leave empty.
-                </Form.Text>
+                <Form.Label>Απενεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
               <Form.Select aria-label="Select Carrier" onChange={(e) => setCARRIER(e.target.value)} type="type">
                 <option value="Kikkaboo">Kikkaboo</option>
@@ -121,13 +95,38 @@ const ConfigPage = () => {
                 <option value="Cangaroo">Cangaroo</option>
               </Form.Select>
               <Row className="mt-5">
-                <Col>
-                  <Button variant="primary" type="submit">
-                    Set Data Connection
+                <Col className="mt-4" md={{ span: 4, offset: 2 }} >
+                  <Button variant="primary" type="submit" size="lg" >
+                    Λήψη
                   </Button>
                 </Col>
                 <Col>
-                  <p className="text-right">Charges may apply</p>
+                  <p className="text-right">Λίγες Οδηγίες. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                </Col>
+              </Row>
+            </Form>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="p-2">
+            <Form onSubmit={dsr}>
+              <Form.Group className="mb-3" controlId="dsr">
+                <Form.Label>Eνεργοποιήσεις Προϊόντων</Form.Label>
+              </Form.Group>
+              <Form.Select aria-label="Select Carrier" onChange={(e) => setCARRIER(e.target.value)} type="type">
+                <option value="Kikkaboo">Kikkaboo</option>
+                <option value="Lorelli">Lorelli</option>
+                <option value="Bebestars">Bebestars</option>
+                <option value="Cangaroo">Cangaroo</option>
+              </Form.Select>
+              <Row className="mt-5">
+                <Col className="mt-4" md={{ span: 4, offset: 2 }} >
+                  <Button variant="primary" type="submit" size="lg" >
+                    Λήψη
+                  </Button>
+                </Col>
+                <Col>
+                  <p className="text-right">Λίγες Οδηγίες. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                 </Col>
               </Row>
             </Form>
