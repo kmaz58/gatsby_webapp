@@ -1,0 +1,16 @@
+$sidebar-bg-color: #19cf7a;
+$sidebar-color: #111111;
+.pro-sidebar{
+  height: 100vh !important;
+}
+
+#logo{
+  height: 90px;
+  margin: 15px;
+}
+
+.color-nav{
+  background-color: $sidebar-bg-color;
+  border-bottom-style: solid;
+  border-width: 1px;
+}
