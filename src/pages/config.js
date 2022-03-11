@@ -20,7 +20,7 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      url: 'http://localhost:8001/wsr',
+      url: 'http://kmaz.pythonanywhere.com/wsr',
       data: { SSID: wifiSSID, wpa: wpaKey },
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      url: 'http://localhost:8001/dsr',
+      url: 'http://kmaz.pythonanywhere.com/dsr',
       data: { pin: simPin, carrier: carrier },
       headers: {
         'Content-Type': 'application/json',
@@ -115,9 +115,10 @@ const ConfigPage = () => {
                 </Form.Text>
               </Form.Group>
               <Form.Select aria-label="Select Carrier" onChange={(e) => setCARRIER(e.target.value)} type="type">
-                <option value="Kikkaboo">Cosmote</option>
-                <option value="Vodafone">Vodafone</option>
-                <option value="Wind">Wind</option>
+                <option value="Kikkaboo">Kikkaboo</option>
+                <option value="Lorelli">Lorelli</option>
+                <option value="Bebestars">Bebestars</option>
+                <option value="Cangaroo">Cangaroo</option>
               </Form.Select>
               <Row className="mt-5">
                 <Col>
