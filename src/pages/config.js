@@ -10,36 +10,16 @@ import fileDownload from 'js-file-download'
 
 
 const ConfigPage = () => {
-  const [wifiSSID, setSSID] = useState(null);
-  const [wpaKey, setWPA] = useState(null);
-  const [simPin, setPIN] = useState(null);
-  const [carrier, setCARRIER] = useState(null);
+  const [disable_company, setDisableCompany] = useState(null);
+  const [enable_company, setEnableCompany] = useState(null);
 
 
-  const wifiSettingsRequest = () => {
+  const disabled_products = () => {
     axios({
       method: 'post',
       mode: "no-cors",
       url: 'https://kmaz.pythonanywhere.com/dsr',
-      data: { SSID: wifiSSID, wpa: wpaKey },
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }
-    }).then(res => {
-      console.log(res)
-
-    }).catch(error => {
-      console.error(error)
-    });
-  }
-
-  const dataSettingsRequest = () => {
-    axios({
-      method: 'post',
-      mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/esr',
-      data: { pin: simPin, carrier: carrier },
+      data: { disable_company },
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -47,20 +27,42 @@ const ConfigPage = () => {
     }).then(res => {
       console.log(res)
       let extension = ".csv"
-      let filename = carrier.concat(extension);
+      let filename = disable_company.concat(extension);
+      fileDownload(res.data, filename)
+
+    }).catch(error => {
+      console.error(error)
+    });
+  }
+
+  const enabled_products = () => {
+    axios({
+      method: 'post',
+      mode: "no-cors",
+      //url: 'https://kmaz.pythonanywhere.com/esr',
+      url: 'http://localhost:8001/esr',
+      data: { enable_company },
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }
+    }).then(res => {
+      //console.log(res)
+      let extension = ".csv"
+      let filename = enable_company.concat(extension);
       fileDownload(res.data, filename)
     }).catch(error => {
       console.error(error)
     });
   }
 
-  const wsr = e => {
+  const esr = e => {
     e.preventDefault()
 
     //console.log(email);
     //console.log(Password);
 
-    wifiSettingsRequest();
+    enabled_products();
   }
 
   const dsr = e => {
@@ -69,7 +71,7 @@ const ConfigPage = () => {
     //console.log(email);
     //console.log(Password);
 
-    dataSettingsRequest();
+    disabled_products();
   }
   // useEffect(() => {
   //    const interval = setInterval(wifiSettingsRequest, 5000)
@@ -88,7 +90,7 @@ const ConfigPage = () => {
               <Form.Group className="mb-3" controlId="dsr">
                 <Form.Label>Απενεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
-              <Form.Select aria-label="Select Carrier" onChange={(e) => setCARRIER(e.target.value)} type="type">
+              <Form.Select aria-label="Select Carrier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
                 <option value="Kikkaboo">Kikkaboo</option>
                 <option value="Lorelli">Lorelli</option>
                 <option value="Bebestars">Bebestars</option>
@@ -109,11 +111,11 @@ const ConfigPage = () => {
         </Col>
         <Col>
           <Card className="p-2">
-            <Form onSubmit={dsr}>
-              <Form.Group className="mb-3" controlId="dsr">
+            <Form onSubmit={esr}>
+              <Form.Group className="mb-3" controlId="esr">
                 <Form.Label>Eνεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
-              <Form.Select aria-label="Select Carrier" onChange={(e) => setCARRIER(e.target.value)} type="type">
+              <Form.Select aria-label="Select Carrier" onChange={(e) => setEnableCompany(e.target.value)} type="type">
                 <option value="Kikkaboo">Kikkaboo</option>
                 <option value="Lorelli">Lorelli</option>
                 <option value="Bebestars">Bebestars</option>
