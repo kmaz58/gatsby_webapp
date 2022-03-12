@@ -91,6 +91,7 @@ const ConfigPage = () => {
                 <Form.Label>Απενεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
               <Form.Select aria-label="Select Carrier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
+                <option value="1">Select</option>
                 <option value="Kikkaboo">Kikkaboo</option>
                 <option value="Lorelli">Lorelli</option>
                 <option value="Bebestars">Bebestars</option>
@@ -115,7 +116,7 @@ const ConfigPage = () => {
               <Form.Group className="mb-3" controlId="esr">
                 <Form.Label>Eνεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
-              <Form.Select aria-label="Select Carrier" onChange={(e) => setEnableCompany(e.target.value)} type="type">
+              <Form.Select aria-label="Select Carrier" onChange={(e) => setEnableCompany(e.target.value)} type="type" defaultValue="Kikkaboo">
                 <option value="Kikkaboo">Kikkaboo</option>
                 <option value="Lorelli">Lorelli</option>
                 <option value="Bebestars">Bebestars</option>
