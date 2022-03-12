@@ -39,8 +39,8 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/esr',
-      url: 'http://localhost:8001/esr',
+      url: 'https://kmaz.pythonanywhere.com/esr',
+      //url: 'http://localhost:8001/esr',
       data: { enable_company },
       headers: {
         'Content-Type': 'application/json',
