@@ -14,12 +14,12 @@ const ConfigPage = () => {
   const [enable_company, setEnableCompany] = useState(null);
 
 
-  const disabled_products = () => {
+  const enabled_products = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/dsr',
-      data: { disable_company },
+      url: 'https://kmaz.pythonanywhere.com/esr',
+      data: { enable_company },
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -27,7 +27,7 @@ const ConfigPage = () => {
     }).then(res => {
       console.log(res)
       let extension = ".csv"
-      let filename = disable_company.concat(extension);
+      let filename = enable_company.concat(extension);
       fileDownload(res.data, filename)
 
     }).catch(error => {
@@ -35,13 +35,13 @@ const ConfigPage = () => {
     });
   }
 
-  const enabled_products = () => {
+  const disabled_products = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/esr',
-      //url: 'http://localhost:8001/esr',
-      data: { enable_company },
+      //url: 'https://kmaz.pythonanywhere.com/dsr',
+      url: 'http://localhost:8001/dsr',
+      data: { disable_company },
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
@@ -49,7 +49,7 @@ const ConfigPage = () => {
     }).then(res => {
       //console.log(res)
       let extension = ".csv"
-      let filename = enable_company.concat(extension);
+      let filename = disable_company;
       fileDownload(res.data, filename)
     }).catch(error => {
       console.error(error)
@@ -86,11 +86,11 @@ const ConfigPage = () => {
       <Row>
         <Col>
           <Card className="p-2">
-            <Form onSubmit={dsr}>
-              <Form.Group className="mb-3" controlId="dsr">
-                <Form.Label>Απενεργοποιήσεις Προϊόντων</Form.Label>
+            <Form onSubmit={esr}>
+              <Form.Group className="mb-3" controlId="esr">
+                <Form.Label>Eνεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
-              <Form.Select aria-label="Select Carrier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
+              <Form.Select aria-label="Select Carrier" onChange={(e) => setEnableCompany(e.target.value)} type="type">
                 <option value="1">Select</option>
                 <option value="Kikkaboo">Kikkaboo</option>
                 <option value="Lorelli">Lorelli</option>
@@ -112,15 +112,19 @@ const ConfigPage = () => {
         </Col>
         <Col>
           <Card className="p-2">
-            <Form onSubmit={esr}>
-              <Form.Group className="mb-3" controlId="esr">
-                <Form.Label>Eνεργοποιήσεις Προϊόντων</Form.Label>
+            <Form onSubmit={dsr}>
+              <Form.Group className="mb-3" controlId="dsr">
+                <Form.Label>Απενεργοποιήσεις Προϊόντων</Form.Label>
               </Form.Group>
-              <Form.Select aria-label="Select Carrier" onChange={(e) => setEnableCompany(e.target.value)} type="type">
-                <option value="Kikkaboo">Kikkaboo</option>
-                <option value="Lorelli">Lorelli</option>
-                <option value="Bebestars">Bebestars</option>
-                <option value="Cangaroo">Cangaroo</option>
+              <Form.Select aria-label="Select Carrier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
+                <option value="Kikka Boo.csv">Kikka Boo</option>
+                <option value="Lorelli.csv">Lorelli</option>
+                <option value="Bebestars.csv">Bebestars</option>
+                <option value="Cangaroo.csv">Cangaroo</option>
+                <option value="Dimcol.xlsx">Dimcol</option>
+                <option value="Le Blanc.xlsx">Le Blanc</option>
+                <option value="Beauty Home.xlsx">Beauty Home</option>
+                <option value="Baby Oliver.xlsx">Baby Oliver</option>
               </Form.Select>
               <Row className="mt-5">
                 <Col className="mt-4" md={{ span: 4, offset: 2 }} >
