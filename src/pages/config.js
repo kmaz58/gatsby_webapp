@@ -39,8 +39,8 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/dsr',
-      url: 'http://localhost:8001/dsr',
+      url: 'https://kmaz.pythonanywhere.com/dsr',
+      //url: 'http://localhost:8001/dsr',
       data: { disable_company },
       headers: {
         'Content-Type': 'application/json',
