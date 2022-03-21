@@ -19,6 +19,7 @@ const ConfigPage = () => {
   const enabled_products = () => {
     axios({
       method: 'post',
+      responseType: 'blob',
       mode: "no-cors",
       url: 'https://kmaz.pythonanywhere.com/esr',
       data: { enable_company },
@@ -43,8 +44,8 @@ const ConfigPage = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/dsr',
-      url: 'http://localhost:8001/dsr',
+      url: 'https://kmaz.pythonanywhere.com/dsr',
+      //url: 'http://localhost:8001/dsr',
       data: { disable_company },
       headers: {
         'Content-Type': 'application/json',
