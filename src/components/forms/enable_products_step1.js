@@ -34,7 +34,8 @@ const Step01 = () => {
       console.log(formData.get("file"))
       axios({
         method: "post",
-        url: 'http://localhost:8001/upload_vasipetit',
+        url: 'https://kmaz.pythonanywhere.com/upload_vasipetit',
+        //url: 'http://localhost:8001/upload_vasipetit',
         data: formData,
         headers: {
           'Content-Type': 'multipart/form-data'

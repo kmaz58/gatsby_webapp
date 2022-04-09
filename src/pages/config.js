@@ -131,7 +131,7 @@ const ConfigPage = () => {
             <Col>
             </Col>
             <Col xs lg="2">
-              <Button onClick={Continue}>Next</Button>
+              <Button className="m-1" onClick={Continue}>Next</Button>
             </Col>
           </Row>
         </div >
@@ -144,7 +144,7 @@ const ConfigPage = () => {
             </Col>
             <Col xs lg="2">
               <Button className="m-1" onClick={Previous}>Previous</Button>
-              <Button onClick={Continue}>Next</Button>
+              <Button className="m-1" onClick={Continue}>Next</Button>
             </Col>
           </Row>
         </div>
