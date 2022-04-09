@@ -15,7 +15,6 @@ function MainLayout(props) {
             <Navbar className="color-nav">
                 <Container >
                     <div>
-
                     </div>
                     <div>
                         <NavLink href="/contact"><img id="contact" src={contact_icon} alt="Contact" height="32" width="32" /></NavLink>
@@ -26,15 +25,15 @@ function MainLayout(props) {
                 <ProSidebar>
                     <Menu iconShape="square">
                         <img id="logo" src={logo} alt="logo_image" />
-                        <MenuItem><Link to="/guide/">Οδηγίες</Link></MenuItem>
-                        <MenuItem><Link to="/config/">Προϊόντα</Link></MenuItem>
-                        <MenuItem><Link to="/check_skroutz/">Έλεγχος Πληρωμών Skroutz</Link></MenuItem>
-                        <MenuItem><Link to="/check_elta/">Έλεγχος Πληρωμών Elta</Link></MenuItem>
-                        <MenuItem><Link to="/contact/">Επικοινωνία</Link></MenuItem>
-                        <MenuItem><BsGearFill /><Link to="/404/"> Ρυθμίσεις</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/guide/">Οδηγίες</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/config/">Προϊόντα</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/check_skroutz/">Έλεγχος Πληρωμών Skroutz</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/check_elta/">Έλεγχος Πληρωμών Elta</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/contact/">Επικοινωνία</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/404/"> Ρυθμίσεις</Link></MenuItem>
                     </Menu>
                 </ProSidebar>
-                <Container className="mt-5">
+                <Container className="ContainerBackground">
                     <Row>
                         <Col>
                             {children}

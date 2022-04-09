@@ -3,15 +3,12 @@ import { Link } from "gatsby"
 import { Button, Card, Col, Row, Form, Table } from 'react-bootstrap';
 import axios from 'axios'
 import MainLayout from '../components/layouts/MainLayout';
-import fileDownload from 'js-file-download'
 
 
 
 
 
 const ConfigPage = () => {
-  const [disable_company, setDisableCompany] = useState(null);
-  const [enable_company, setEnableCompany] = useState(null);
   const [tableData, setTableData] = useState([]);
 
 
@@ -34,35 +31,6 @@ const ConfigPage = () => {
     });
   }
 
-  const enabled_products = () => {
-    axios({
-      method: 'post',
-      mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/esr',
-      //url: 'http://localhost:8001/esr',
-      data: { enable_company },
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }
-    }).then(res => {
-      //console.log(res)
-      let extension = ".csv"
-      let filename = enable_company.concat(extension);
-      fileDownload(res.data, filename)
-    }).catch(error => {
-      console.error(error)
-    });
-  }
-
-  const esr = e => {
-    e.preventDefault()
-
-    //console.log(email);
-    //console.log(Password);
-
-    enabled_products();
-  }
 
   const cdc = e => {
     e.preventDefault()
@@ -261,6 +229,7 @@ const ConfigPage = () => {
       </tr>
     ))
   }
+
 
   return (
     <MainLayout>

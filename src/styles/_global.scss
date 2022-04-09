@@ -1,5 +1,7 @@
-$sidebar-bg-color: #19cf7a;
-$sidebar-color: #111111;
+$sidebar-bg-color: #c0c0c4;
+$navbar-color: #A0A0A6;
+$child-background-color: #DFDFE1;
+
 .pro-sidebar{
   height: 100vh !important;
 }
@@ -10,7 +12,21 @@ $sidebar-color: #111111;
 }
 
 .color-nav{
-  background-color: $sidebar-bg-color;
+  background-color: $navbar-color;
   border-bottom-style: solid;
   border-width: 1px;
+}
+
+.MenuItem{
+  color: #000 !important;
+}
+
+.ContainerBackground{
+  //background-color: #EAEAEB;
+  padding: 10px;
+}
+
+.Card{
+  //background-color: #EAEAEB;
+  padding: 10px;
 }
