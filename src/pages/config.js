@@ -18,32 +18,11 @@ const ConfigPage = () => {
   const [enable_company, setEnableCompany] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [selected_file, setSelectedFile] = useState(null);
+  const [step, setstep] = useState(1);
 
 
 
-  const enabled_products = () => {
-    setIsLoading(true);
-    axios({
-      method: 'post',
-      responseType: 'blob',
-      mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/esr',
-      url: 'http://localhost:8001/esr',
-      data: { enable_company },
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      }
-    }).then(res => {
 
-      //console.log(res)
-      setIsLoading(false)
-      let filename = enable_company;
-      fileDownload(res.data, filename)
-    }).catch(error => {
-      console.error(error)
-    });
-  }
 
   const disabled_products = () => {
     setIsLoading(true);
@@ -51,8 +30,8 @@ const ConfigPage = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/dsr',
-      url: 'http://localhost:8001/dsr',
+      url: 'https://kmaz.pythonanywhere.com/dsr',
+      //url: 'http://localhost:8001/dsr',
       data: { disable_company },
       headers: {
         'Content-Type': 'application/json',
@@ -91,58 +70,25 @@ const ConfigPage = () => {
     });
   }
 
-  const fileupload_vasipetit = (e) => {
-    setIsLoading(true);
-    console.log(selected_file);
-    const formData = new FormData();
-    formData.append("name", "tmp");
-    formData.append('file', selected_file);
-    try {
-      console.log(selected_file);
-      console.log(formData.get("file"))
-      axios({
-        method: "post",
-        url: 'http://localhost:8001/upload_vasipetit',
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-    } catch (error) {
-      console.log(error)
-    }
-    setIsLoading(false);
+
+  // function for going to next step by increasing step state by 1
+  const nextStep = () => {
+    setstep(step + 1);
+  };
+
+  // function for going to previous step by decreasing step state by 1
+  const prevStep = () => {
+    setstep(step - 1);
+  };
+
+  const Continue = e => {
+    e.preventDefault();
+    nextStep();
   }
 
-  const fileupload_exludeproducts = (e) => {
-    setIsLoading(true);
-    console.log(selected_file);
-    const formData = new FormData();
-    formData.append("name", "tmp");
-    formData.append('file', selected_file);
-    try {
-      console.log(selected_file);
-      console.log(formData.get("file"))
-      axios({
-        method: "post",
-        url: 'http://localhost:8001/upload_exludeproducts',
-        data: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-    } catch (error) {
-      console.log(error)
-    }
-    setIsLoading(false);
-  }
-
-  const esr = e => {
-    e.preventDefault()
-    //console.log(email);
-    //console.log(Password);
-
-    enabled_products();
+  const Previous = e => {
+    e.preventDefault();
+    prevStep();
   }
 
   const dsr = e => {
@@ -163,27 +109,9 @@ const ConfigPage = () => {
     getXml();
   }
 
-  const fuvp = e => {
-    e.preventDefault()
-    console.log(selected_file);
 
 
-    //console.log(email);
-    //console.log(Password);
 
-    fileupload_vasipetit();
-  }
-
-  const fuexcludeproducts = e => {
-    e.preventDefault()
-    console.log(selected_file);
-
-
-    //console.log(email);
-    //console.log(Password);
-
-    fileupload_exludeproducts();
-  }
 
   // useEffect(() => {
   //    const interval = setInterval(wifiSettingsRequest, 5000)
@@ -193,6 +121,50 @@ const ConfigPage = () => {
   //   }
   // }, [])
 
+
+  const switch_form = () => {
+    switch (step) {
+      case 1:
+        return (<div>
+          <Step01 />
+          <Row>
+            <Col>
+            </Col>
+            <Col xs lg="2">
+              <Button onClick={Continue}>Next</Button>
+            </Col>
+          </Row>
+        </div >
+        )
+      case 2:
+        return (<div>
+          <Step02 />
+          <Row>
+            <Col>
+            </Col>
+            <Col xs lg="2">
+              <Button className="m-1" onClick={Previous}>Previous</Button>
+              <Button onClick={Continue}>Next</Button>
+            </Col>
+          </Row>
+        </div>
+        )
+      case 3:
+        return (<div>
+          <Step03 />
+          <Row>
+            <Col>
+            </Col>
+            <Col xs lg="2">
+              <Button className="m-1" onClick={Previous}>Previous</Button>
+            </Col>
+          </Row>
+        </div>
+        )
+      default:
+      // do nothing
+    }
+  }
 
 
   return (
@@ -226,57 +198,8 @@ const ConfigPage = () => {
       <Row>
         <Col>
           <Card className="Card">
-            <Form onSubmit={esr}>
-              <Form.Group className="mb-3" controlId="esr">
-                <Form.Label>Eνεργοποιήσεις Προϊόντων</Form.Label>
-              </Form.Group>
-              <Form.Select aria-label="Select Carrier" onChange={(e) => setEnableCompany(e.target.value)} type="type">
-                <option value="1">Select</option>
-                <option value="Enabled Products Kikka Boo.xlsx">Kikka Boo</option>
-                <option value="Enabled Products Lorelli.xlsx">Lorelli</option>
-                <option value="Enabled Products Bebestars.xlsx">Bebestars</option>
-                <option value="Enabled Products Cangaroo.xlsx">Cangaroo</option>
-                <option value="Enabled Products Dimcol.xlsx">Dimcol</option>
-                <option value="Enabled Products Le Blanc.xlsx">Le Blanc</option>
-                <option value="Enabled Products Beauty Home.xlsx">Beauty Home</option>
-                <option value="Enabled Products Baby Oliver.xlsx">Baby Oliver</option>
-              </Form.Select>
-              <Row className="mt-5">
-                <Col>
-                  <Button variant="primary" type="submit" size="lg" >
-                    Λήψη
-                  </Button>
-                </Col>
-              </Row>
-            </Form>
-            <Row className="mt-2">
-              <Col>
-                <Card className="Card">
-                  <Form onSubmit={fuvp}>
-                    <Form.Group className="mt-3" onChange={(e) => setSelectedFile(e.target.files[0])} type="file">
-                      <Form.Label>Εισαγωγή Προϊόντων Monpetit</Form.Label>
-                      <Form.Control type="file" />
-                      <Button className="mt-2" variant="primary" type="submit" size="lg" >
-                        Εισαγωγή
-                      </Button>
-                    </Form.Group>
-                  </Form>
-                </Card>
-              </Col>
-              <Col>
-                <Card className="Card">
-                  <Form onSubmit={fuexcludeproducts}>
-                    <Form.Group className="mt-3" onChange={(e) => setSelectedFile(e.target.files[0])} type="file">
-                      <Form.Label>Εισαγωγή Προϊόντων για Εξαίρεση</Form.Label>
-                      <Form.Control type="file" />
-                      <Button className="mt-2" variant="primary" type="submit" size="lg" >
-                        Εισαγωγή
-                      </Button>
-                    </Form.Group>
-                  </Form>
-                </Card>
-              </Col>
-            </Row>
+            <h2>Eνεργοποιήσεις Προϊόντων</h2>
+            <div>{switch_form()}</div>
           </Card>
         </Col>
       </Row>
