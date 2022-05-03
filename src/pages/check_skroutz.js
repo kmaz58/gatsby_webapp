@@ -1,12 +1,24 @@
 import * as React from "react"
 
 import MainLayout from "../components/layouts/MainLayout"
-import Img_404 from "../images/404.gif"
+import Pdfconverter from "../components/forms/pdf_converter_skroutz"
+import { Card, Row, Col } from "react-bootstrap"
 
-const Contact = () => (
-  <MainLayout>
-    <h2>Check Skroutz</h2>
-  </MainLayout>
-)
+const Contact = () => {
+  return (
+    <MainLayout>
+      <h2>Check Skroutz</h2>
+      <Row>
+        <Col>
+          <Card className="Card">
+            <Pdfconverter />
+          </Card>
+        </Col>
+        <Col>
+        </Col>
+      </Row>
+    </MainLayout>
 
+  )
+}
 export default Contact

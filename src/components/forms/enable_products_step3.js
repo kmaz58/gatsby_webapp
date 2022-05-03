@@ -60,13 +60,25 @@ const Step03 = () => {
         </Form.Select>
         <Row className="mt-5">
           <Col>
-            <Button variant="primary" type="submit" size="lg" >
-              Λήψη
+            <Button variant="primary" type="submit" >
+              <Row>{isLoading &&
+                <Col>
+                  <Spinner
+                    as="span"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
+                </Col>
+              }
+                <Col>Λήψη</Col>
+              </Row>
             </Button>
           </Col>
-        </Row>
-      </Form>
-    </div>
+        </Row >
+      </Form >
+    </div >
   )
 
 }

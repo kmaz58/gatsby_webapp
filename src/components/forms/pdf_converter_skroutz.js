@@ -1,19 +1,18 @@
-import React, { useState, useEffect, Component } from "react"
-import { Link } from "gatsby"
-import { Button, Card, Col, Row, Form, Spinner } from 'react-bootstrap';
+import React, { useState } from "react"
+import { Button, Col, Row, Form, Spinner } from 'react-bootstrap';
 import axios from 'axios'
 
 
 
 
 
-const Step02 = () => {
+const Pdfconverter = () => {
   const [selected_file, setSelectedFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [selected_file_label, setSelected_file_label] = useState("No File Selected");
 
 
-  const fuexcludeproducts = e => {
+  const fupdf = e => {
     e.preventDefault()
     console.log(selected_file);
 
@@ -21,36 +20,43 @@ const Step02 = () => {
     //console.log(email);
     //console.log(Password);
 
-    fileupload_exludeproducts();
+    fileupload_pdfconvert();
   }
 
-  const fileupload_exludeproducts = (e) => {
-    setIsLoading(true);
+  const fileupload_pdfconvert = (e) => {
+
+
     console.log(selected_file);
     const formData = new FormData();
     formData.append("name", "tmp");
     formData.append('file', selected_file);
 
+    //console.log(formData)
+
+    setIsLoading(true);
     console.log(selected_file);
     console.log(formData.get("file"))
     axios({
       method: "post",
-      url: 'http://localhost:8001/upload_exludeproducts',
+      //url: 'https://kmaz.pythonanywhere.com/upload_pdftoconvert',
+      url: 'http://localhost:8001/upload_pdftoconvert',
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
     setIsLoading(false);
+    setSelected_file_label("File Uploaded Successfully");
+
   }
 
   return (
     <div>
-      <Form onSubmit={fuexcludeproducts}>
+      <Form onSubmit={fupdf}>
         <Form.Group className="mt-3" onChange={(e) => setSelectedFile(e.target.files[0])} type="file">
-          <Form.Label>Εισαγωγή Προϊόντων για Εξαίρεση</Form.Label>
+          <Form.Label>Εισαγωγή Pdf για μετατροπή</Form.Label>
           <Form.Control type="file" />
-          <Button className="mt-2" variant="primary" type="submit">
+          <Button className="mt-2" variant="primary" type="submit"  >
             <Row>
               {isLoading &&
                 <Col>
@@ -76,4 +82,6 @@ const Step02 = () => {
     </div >
   )
 }
-export default Step02
+
+
+export default Pdfconverter

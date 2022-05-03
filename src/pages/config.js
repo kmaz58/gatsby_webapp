@@ -53,8 +53,8 @@ const ConfigPage = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/gxml',
-      //url: 'http://localhost:8001/dsr',
+      //url: 'https://kmaz.pythonanywhere.com/gxml',
+      url: 'http://localhost:8001/gxml',
       data: { companyxml },
       headers: {
         'Content-Type': 'application/json',
@@ -143,11 +143,15 @@ const ConfigPage = () => {
             <Col>
             </Col>
             <Col xs lg="2">
-              <Button className="m-1" onClick={Previous}>Previous</Button>
-              <Button className="m-1" onClick={Continue}>Next</Button>
+              <Row>
+                <Col>
+                  <Button className="m-1" onClick={Previous}>Previous</Button>
+                  <Button className="m-1" onClick={Continue}>Next</Button>
+                </Col>
+              </Row>
             </Col>
-          </Row>
-        </div>
+          </Row >
+        </div >
         )
       case 3:
         return (<div>
@@ -198,7 +202,7 @@ const ConfigPage = () => {
       <Row>
         <Col>
           <Card className="Card">
-            <h2>Eνεργοποιήσεις Προϊόντων</h2>
+            <h4>Eνεργοποιήσεις Προϊόντων</h4>
             <div>{switch_form()}</div>
           </Card>
         </Col>
@@ -208,7 +212,7 @@ const ConfigPage = () => {
           <Card className="Card">
             <Form onSubmit={dsr}>
               <Form.Group className="mb-3" controlId="dsr">
-                <Form.Label>Απενεργοποιήσεις Προϊόντων</Form.Label>
+                <Form.Label><h4>Απενεργοποιήσεις Προϊόντων</h4></Form.Label>
               </Form.Group>
               <Form.Select aria-label="Select Supplier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
                 <option value="1">Select</option>
@@ -223,7 +227,7 @@ const ConfigPage = () => {
               </Form.Select>
               <Row className="mt-5">
                 <Col className="mt-4" md={{ span: 4, offset: 2 }} >
-                  <Button variant="primary" type="submit" size="lg" >
+                  <Button variant="primary" type="submit" >
                     Λήψη
                   </Button>
                 </Col>
@@ -238,7 +242,7 @@ const ConfigPage = () => {
           <Card className="Card">
             <Form onSubmit={gxml}>
               <Form.Group className="mb-3" controlId="gxml">
-                <Form.Label>Xml Προμηθευτών </Form.Label>
+                <Form.Label><h4>Xml Προμηθευτών</h4></Form.Label>
               </Form.Group>
               <Form.Select aria-label="Select Supplier" onChange={(e) => setCompanyXml(e.target.value)} type="type">
                 <option value="1">Select</option>
@@ -253,7 +257,7 @@ const ConfigPage = () => {
               </Form.Select>
               <Row className="mt-5">
                 <Col className="mt-4" md={{ span: 4, offset: 2 }} >
-                  <Button variant="primary" type="submit" size="lg" >
+                  <Button variant="primary" type="submit"  >
                     Λήψη
                   </Button>
                 </Col>
