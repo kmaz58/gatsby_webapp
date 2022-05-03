@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Button, Col, Row, Form, Spinner } from 'react-bootstrap';
 import axios from 'axios'
+import fileDownload from 'js-file-download'
+
 
 
 
@@ -44,9 +46,18 @@ const Pdfconverter = () => {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
+    }).then(res => {
+      //console.log(res)
+
+      let filename = disable_company;
+      fileDownload(res.data, filename)
+      setSelected_file_label("File Converted Successfully");
+      setIsLoading(false)
+    }).catch(error => {
+      console.error(error)
     });
-    setIsLoading(false);
-    setSelected_file_label("File Uploaded Successfully");
+
+
 
   }
 
@@ -70,7 +81,7 @@ const Pdfconverter = () => {
                 </Col>
               }
               <Col>
-                Εισαγωγή
+                Μετατροπή
               </Col>
             </Row>
           </Button>
