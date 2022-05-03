@@ -38,8 +38,8 @@ const Pdfconverter = () => {
     console.log(formData.get("file"))
     axios({
       method: "post",
-      //url: 'https://kmaz.pythonanywhere.com/upload_pdftoconvert',
-      url: 'http://localhost:8001/upload_pdftoconvert',
+      url: 'https://kmaz.pythonanywhere.com/upload_pdftoconvert',
+      //url: 'http://localhost:8001/upload_pdftoconvert',
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data'
