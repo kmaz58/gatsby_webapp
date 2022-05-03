@@ -48,8 +48,8 @@ const Pdfconverter = () => {
       }
     }).then(res => {
       //console.log(res)
-      let filename1 = formData.get("name");
-      let filename2 = ".pdf";
+      let filename1 = selected_file.name.slice(0, -3);
+      let filename2 = "csv";
       let filename = filename1.concat(filename2);
       fileDownload(res.data, filename)
       setSelected_file_label("File Converted Successfully");

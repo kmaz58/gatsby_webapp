@@ -216,14 +216,14 @@ const ConfigPage = () => {
               </Form.Group>
               <Form.Select aria-label="Select Supplier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
                 <option value="1">Select</option>
-                <option value="Disabled Products Kikka Boo.csv">Kikka Boo</option>
-                <option value="Disabled Products Lorelli.csv">Lorelli</option>
-                <option value="Disabled Products Bebestars.csv">Bebestars</option>
-                <option value="Disabled Products Cangaroo.csv">Cangaroo</option>
-                <option value="Disabled Products Dimcol.xlsx">Dimcol</option>
-                <option value="Disabled Products Le Blanc.xlsx">Le Blanc</option>
-                <option value="Disabled Products Beauty Home.xlsx">Beauty Home</option>
-                <option value="Disabled Products Baby Oliver.xlsx">Baby Oliver</option>
+                <option value="Kikka Boo Disabled Products.csv">Kikka Boo</option>
+                <option value="Lorelli Disabled Products.csv">Lorelli</option>
+                <option value="Bebestars Disabled Products.csv">Bebestars</option>
+                <option value="Cangaroo Disabled Products.csv">Cangaroo</option>
+                <option value="Dimcol Disabled Products.xlsx">Dimcol</option>
+                <option value="Le Blanc Disabled Products.xlsx">Le Blanc</option>
+                <option value="Beauty Home Disabled Products.xlsx">Beauty Home</option>
+                <option value="Baby Oliver Disabled Products.xlsx">Baby Oliver</option>
               </Form.Select>
               <Row className="mt-5">
                 <Col className="mt-4" md={{ span: 4, offset: 2 }} >
