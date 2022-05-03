@@ -30,10 +30,10 @@ const Pdfconverter = () => {
 
     console.log(selected_file);
     const formData = new FormData();
-    formData.append("name", "tmp");
+    formData.append("name", "Skroutz_report");
     formData.append('file', selected_file);
 
-    //console.log(formData)
+    console.log(formData)
 
     setIsLoading(true);
     console.log(selected_file);
@@ -48,8 +48,9 @@ const Pdfconverter = () => {
       }
     }).then(res => {
       //console.log(res)
-
-      let filename = disable_company;
+      let filename1 = formData.get("name");
+      let filename2 = ".pdf";
+      let filename = filename1.concat(filename2);
       fileDownload(res.data, filename)
       setSelected_file_label("File Converted Successfully");
       setIsLoading(false)
