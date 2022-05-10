@@ -40,6 +40,7 @@ const Pdfconverter = () => {
     console.log(formData.get("file"))
     axios({
       method: "post",
+      responseType: 'blob',
       url: 'https://kmaz.pythonanywhere.com/upload_pdftoconvert',
       //url: 'http://localhost:8001/upload_pdftoconvert',
       data: formData,
@@ -49,7 +50,7 @@ const Pdfconverter = () => {
     }).then(res => {
       //console.log(res)
       let filename1 = selected_file.name.slice(0, -3);
-      let filename2 = "csv";
+      let filename2 = "xlsx";
       let filename = filename1.concat(filename2);
       fileDownload(res.data, filename)
       setSelected_file_label("File Converted Successfully");

@@ -16,6 +16,7 @@
     "react": "^17.0.1",
     "react-bootstrap": "^2.0.4",
     "react-bootstrap-icons": "^1.7.2",
+    "react-calendar": "^3.7.0",
     "react-dom": "^17.0.1",
     "react-native-animated-pagination-dot": "^0.3.2",
     "react-pro-sidebar": "^0.7.1",

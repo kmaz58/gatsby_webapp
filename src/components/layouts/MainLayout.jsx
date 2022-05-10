@@ -25,8 +25,8 @@ function MainLayout(props) {
                 <ProSidebar>
                     <Menu iconShape="square">
                         <img id="logo" src={logo} alt="logo_image" />
-                        <MenuItem><Link className='MenuItem' to="/guide/">Οδηγίες</Link></MenuItem>
-                        <MenuItem><Link className='MenuItem' to="/config/">Προϊόντα</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/reports/">Αναφορές</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/products/">Προϊόντα</Link></MenuItem>
                         <MenuItem><Link className='MenuItem' to="/check_skroutz/">Έλεγχος Πληρωμών Skroutz</Link></MenuItem>
                         <MenuItem><Link className='MenuItem' to="/check_elta/">Έλεγχος Πληρωμών Elta</Link></MenuItem>
                         <MenuItem><Link className='MenuItem' to="/contact/">Επικοινωνία</Link></MenuItem>
