@@ -41,7 +41,34 @@ const ConfigPage = () => {
       //console.log(res)
       setIsLoading(false)
       let filename = disable_company;
-      fileDownload(res.data, filename)
+      // fileDownload(res.data, filename)
+      axios({
+        method: 'post',
+        mode: "no-cors",
+        url: 'https://kmaz.pythonanywhere.com/percentage',
+        //url: 'http://localhost:8001/percentage',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        }
+      }).then(res => {
+
+        if (res.data > 2.5) {
+
+          alert('Πολύ μεγάλη διαφορά μεταξύ των τελαυταίων αρχείων (> 2.5%):\n\n' + Math.round(res.data * 100) / 100 + '%\n');
+        }
+        else {
+          fileDownload(res.data, filename)
+        }
+
+
+        console.log(res.data)
+
+      }).catch(error => {
+        console.error(error)
+      });
+
+
     }).catch(error => {
       console.error(error)
     });
@@ -53,8 +80,8 @@ const ConfigPage = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/gxml',
-      url: 'http://localhost:8001/gxml',
+      url: 'https://kmaz.pythonanywhere.com/gxml',
+      //url: 'http://localhost:8001/gxml',
       data: { companyxml },
       headers: {
         'Content-Type': 'application/json',
@@ -246,7 +273,7 @@ const ConfigPage = () => {
               </Form.Group>
               <Form.Select aria-label="Select Supplier" onChange={(e) => setCompanyXml(e.target.value)} type="type">
                 <option value="1">Select</option>
-                <option value="Kikka Boo.csv">Kikka Boo</option>
+                <option value="Kikka Boo.xlsx">Kikka Boo</option>
                 <option value="Lorelli.csv">Lorelli</option>
                 <option value="Bebestars.csv">Bebestars</option>
                 <option value="Cangaroo.csv">Cangaroo</option>
