@@ -41,6 +41,7 @@ const ConfigPage = () => {
       //console.log(res)
       setIsLoading(false)
       let filename = disable_company;
+      let disabled_products_res = res.data
       // fileDownload(res.data, filename)
       axios({
         method: 'post',
@@ -55,10 +56,10 @@ const ConfigPage = () => {
 
         if (res.data > 2.5) {
 
-          alert('Πολύ μεγάλη διαφορά μεταξύ των τελαυταίων αρχείων (> 2.5%):\n\n' + Math.round(res.data * 100) / 100 + '%\n');
+          alert('Πολύ μεγάλη διαφορά μεταξύ των τελευταίων αρχείων (> 2.5%):\n\n' + Math.round(res.data * 100) / 100 + '%\n');
         }
         else {
-          fileDownload(res.data, filename)
+          fileDownload(disabled_products_res, filename)
         }
 
 
