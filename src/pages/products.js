@@ -56,7 +56,7 @@ const ConfigPage = () => {
 
         if (res.data > parseFloat(localStorage.getItem("acceptedDiff"))) {
 
-          alert('Πολύ μεγάλη διαφορά μεταξύ των τελευταίων αρχείων (> 2.5%):\n\n' + 'Αποδεκτή Διαφορά: <= ' + Math.round(localStorage.getItem("acceptedDiff") * 100) / 100 + '%\n');
+          alert('Πολύ μεγάλη διαφορά μεταξύ των τελευταίων αρχείων: ' + Math.round(res.data * 100) / 100 + ' %\n\n' + 'Αποδεκτή Διαφορά: <= ' + Math.round(localStorage.getItem("acceptedDiff") * 100) / 100 + '%\n');
         }
         else {
           fileDownload(disabled_products_res, filename)
