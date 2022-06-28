@@ -9,7 +9,14 @@ const UserPref = () => {
   const [data1, settextdata1] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [textdata_label, settextdata_label] = useState("No File Selected");
-  let acceptedDiff = localStorage.getItem("acceptedDiff");
+  let acceptedDiff = 0;
+  if (typeof window !== 'undefined') {
+    acceptedDiff = localStorage.getItem("acceptedDiff");
+  } else {
+    acceptedDiff = 0
+  }
+
+
 
   const setFileAcceptableDiffNumber = e => {
     e.preventDefault()
