@@ -30,7 +30,8 @@ function MainLayout(props) {
                         <MenuItem><Link className='MenuItem' to="/check_skroutz/">Έλεγχος Πληρωμών Skroutz</Link></MenuItem>
                         <MenuItem><Link className='MenuItem' to="/check_elta/">Έλεγχος Πληρωμών Elta</Link></MenuItem>
                         <MenuItem><Link className='MenuItem' to="/contact/">Επικοινωνία</Link></MenuItem>
-                        <MenuItem><Link className='MenuItem' to="/404/"> Ρυθμίσεις</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/settings/"> Ρυθμίσεις</Link></MenuItem>
+                        <MenuItem><Link className='MenuItem' to="/404/"> 404</Link></MenuItem>
                     </Menu>
                 </ProSidebar>
                 <Container className="ContainerBackground">

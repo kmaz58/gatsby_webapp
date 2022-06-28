@@ -7,3 +7,10 @@ import './src/styles/main.scss';
  */
 
 // You can delete this file if you're not using it
+
+export const onClientEntry = () => {
+  localStorage.setItem("acceptedDiff", "2.5")
+  console.log(localStorage.getItem("acceptedDiff"))
+
+  //loginUser('kmaz58@yahoo.com', 'azxnm42')
+}
