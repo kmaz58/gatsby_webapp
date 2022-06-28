@@ -9,7 +9,7 @@ const UserPref = () => {
   const [data1, settextdata1] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [textdata_label, settextdata_label] = useState("No File Selected");
-
+  let acceptedDiff = localStorage.getItem("acceptedDiff");
 
   const setFileAcceptableDiffNumber = e => {
     e.preventDefault()
@@ -39,7 +39,7 @@ const UserPref = () => {
 
               <Form.Group className="mt-3" onChange={(e) => settextdata1(e.target.value)} type="type">
                 <Form.Label>Αποδεκτή διαφορά αρχείων απενεργοποιήσεων</Form.Label>
-                <Form.Control type="number" placeholder={localStorage.getItem("acceptedDiff")} step="0.1" />
+                <Form.Control type="number" placeholder={acceptedDiff} step="0.1" />
               </Form.Group>
 
               <Button className="mt-2" variant="primary" type="submit"  >
