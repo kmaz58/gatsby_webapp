@@ -16,8 +16,8 @@ const ConfigPage = () => {
     axios({
       method: 'post',
       mode: "no-cors",
-      // url: 'https://kmaz.pythonanywhere.com/cdc',
-      url: 'http://localhost:8001/cdc',
+      url: 'https://kmaz.pythonanywhere.com/cdc',
+      //url: 'http://localhost:8001/cdc',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

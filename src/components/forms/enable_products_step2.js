@@ -35,13 +35,17 @@ const Step02 = () => {
     console.log(formData.get("file"))
     axios({
       method: "post",
-      url: 'http://localhost:8001/upload_exludeproducts',
+      url: 'https://kmaz.pythonanywhere.com/upload_excludeproducts',
+      //url: 'http://localhost:8001/upload_excludeproducts',
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data'
       }
+    }).then(res => {
+      setIsLoading(false);
+      setSelected_file_label(res.data);
     });
-    setIsLoading(false);
+
   }
 
   return (
