@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Component } from "react"
-
 import MainLayout from "../components/layouts/MainLayout"
 import Img_404 from "../images/404.gif"
-
+import axios from 'axios'
 import { Button, Card, Col, Row, Form, Spinner } from 'react-bootstrap';
+import fileDownload from 'js-file-download'
 
 const UserPref = () => {
   const [data1, settextdata1] = useState(null);
@@ -31,6 +31,30 @@ const UserPref = () => {
 
   }
 
+  const downloadOldDisabledProducts = e => {
+    e.preventDefault()
+    setIsLoading(true);
+    axios({
+      method: 'post',
+      responseType: 'blob',
+      mode: "no-cors",
+      //url: 'https://kmaz.pythonanywhere.com/download_disabledoldfiles',
+      url: 'http://localhost:8001/download_disabledoldfiles',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      }
+    }).then(res => {
+      //console.log(res)
+      setIsLoading(false)
+      let filename = "Disabled_Products_Old.zip";
+      fileDownload(res.data, filename)
+    }).catch(error => {
+      console.error(error)
+    });
+
+  }
+
 
 
   return (
@@ -48,31 +72,54 @@ const UserPref = () => {
                 <Form.Label>Αποδεκτή διαφορά αρχείων απενεργοποιήσεων</Form.Label>
                 <Form.Control type="number" placeholder={acceptedDiff} step="0.1" />
               </Form.Group>
-
-              <Button className="mt-2" variant="primary" type="submit"  >
-                <Row>
-                  {isLoading &&
-                    <Col>
-                      <Spinner
-                        as="span"
-                        animation="border"
-                        size="sm"
-                        role="status"
-                        aria-hidden="true"
-                      />
-                    </Col>
-                  }
-                  <Col>
-                    Εισαγωγή
-                  </Col>
-                </Row>
-              </Button>
+              <Row>
+                <Col>
+                  <Button className="mt-2" variant="primary" type="submit"  >
+                    <Row>
+                      {isLoading &&
+                        <Col>
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                        </Col>
+                      }
+                      <Col>
+                        Εισαγωγή
+                      </Col>
+                    </Row>
+                  </Button>
+                </Col>
+                <Col>
+                  <Button className="mt-2" variant="primary" onClick={downloadOldDisabledProducts}>
+                    <Row>
+                      {isLoading &&
+                        <Col>
+                          <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                          />
+                        </Col>
+                      }
+                      <Col>
+                        Download Old Files
+                      </Col>
+                    </Row>
+                  </Button>
+                </Col>
+              </Row>
             </Form>
           </Card >
-        </Col>
+        </Col >
         <Col>
         </Col>
-      </Row>
+      </Row >
 
     </MainLayout >
   )
