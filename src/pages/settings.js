@@ -38,8 +38,8 @@ const UserPref = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      //url: 'https://kmaz.pythonanywhere.com/download_disabledoldfiles',
-      url: 'http://localhost:8001/download_disabledoldfiles',
+      url: 'https://kmaz.pythonanywhere.com/download_disabledoldfiles',
+      //url: 'http://localhost:8001/download_disabledoldfiles',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
