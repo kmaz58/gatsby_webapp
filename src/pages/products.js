@@ -46,8 +46,8 @@ const ConfigPage = () => {
       axios({
         method: 'post',
         mode: "no-cors",
-        //url: 'https://kmaz.pythonanywhere.com/percentage',
-        url: 'http://localhost:8001/percentage',
+        url: 'https://kmaz.pythonanywhere.com/percentage',
+        //url: 'http://localhost:8001/percentage',
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
