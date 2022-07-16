@@ -30,8 +30,8 @@ const ConfigPage = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/dsr',
-      //url: 'http://localhost:8001/dsr',
+      //url: 'https://kmaz.pythonanywhere.com/dsr',
+      url: 'http://localhost:8001/dsr',
       data: { disable_company },
       headers: {
         'Content-Type': 'application/json',
@@ -46,8 +46,8 @@ const ConfigPage = () => {
       axios({
         method: 'post',
         mode: "no-cors",
-        url: 'https://kmaz.pythonanywhere.com/percentage',
-        //url: 'http://localhost:8001/percentage',
+        //url: 'https://kmaz.pythonanywhere.com/percentage',
+        url: 'http://localhost:8001/percentage',
         headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
@@ -82,8 +82,8 @@ const ConfigPage = () => {
       method: 'post',
       responseType: 'blob',
       mode: "no-cors",
-      url: 'https://kmaz.pythonanywhere.com/gxml',
-      //url: 'http://localhost:8001/gxml',
+      //url: 'https://kmaz.pythonanywhere.com/gxml',
+      url: 'http://localhost:8001/getrawxml',
       data: { companyxml },
       headers: {
         'Content-Type': 'application/json',
@@ -245,10 +245,10 @@ const ConfigPage = () => {
               </Form.Group>
               <Form.Select aria-label="Select Supplier" onChange={(e) => setDisableCompany(e.target.value)} type="type">
                 <option value="1">Select</option>
-                <option value="Kikka Boo Disabled Products.csv">Kikka Boo</option>
-                <option value="Lorelli Disabled Products.csv">Lorelli</option>
-                <option value="Bebestars Disabled Products.csv">Bebestars</option>
-                <option value="Cangaroo Disabled Products.csv">Cangaroo</option>
+                <option value="Kikka Boo Disabled Products.xlsx">Kikka Boo</option>
+                <option value="Lorelli Disabled Products.xlsx">Lorelli</option>
+                <option value="Bebestars Disabled Products.xlsx">Bebestars</option>
+                <option value="Cangaroo Disabled Products.xlsx">Cangaroo</option>
                 <option value="Dimcol Disabled Products.xlsx">Dimcol</option>
                 <option value="Le Blanc Disabled Products.xlsx">Le Blanc</option>
                 <option value="Beauty Home Disabled Products.xlsx">Beauty Home</option>
@@ -271,18 +271,18 @@ const ConfigPage = () => {
           <Card className="Card">
             <Form onSubmit={gxml}>
               <Form.Group className="mb-3" controlId="gxml">
-                <Form.Label><h4>Xml Προμηθευτών</h4></Form.Label>
+                <Form.Label><h4>Xml Προμηθευτών (Raw) </h4></Form.Label>
               </Form.Group>
               <Form.Select aria-label="Select Supplier" onChange={(e) => setCompanyXml(e.target.value)} type="type">
                 <option value="1">Select</option>
-                <option value="Kikka Boo.xlsx">Kikka Boo</option>
-                <option value="Lorelli.csv">Lorelli</option>
-                <option value="Bebestars.csv">Bebestars</option>
-                <option value="Cangaroo.csv">Cangaroo</option>
+                <option value="Kikka Boo.xml">Kikka Boo</option>
+                <option value="Lorelli.xml">Lorelli</option>
+                <option value="Bebestars.xml">Bebestars</option>
+                <option value="Cangaroo.xml">Cangaroo</option>
                 <option value="Dimcol.xlsx">Dimcol</option>
-                <option value="Le Blanc.xlsx">Le Blanc</option>
-                <option value="Beauty Home.xlsx">Beauty Home</option>
-                <option value="Baby Oliver.xlsx">Baby Oliver</option>
+                <option value="Le Blanc.xml">Le Blanc</option>
+                <option value="Beauty Home.xml">Beauty Home</option>
+                <option value="Baby Oliver.xml">Baby Oliver</option>
               </Form.Select>
               <Row className="mt-5">
                 <Col className="mt-4" md={{ span: 4, offset: 2 }} >
